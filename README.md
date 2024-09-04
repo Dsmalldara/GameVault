@@ -1,5 +1,5 @@
 GameVault: Decentralized Crowdfunding for Gamers
-Welcome to GameVault, a decentralized crowdfunding platform tailored for anyone who wishes to raise funds for a cause, project, trip, and just about anything that matters to them. GameVault leverages blockchain technology to enable transparent and secure fundraising, empowering users with a social and gamified experience even as they bring their financial dreams to life.
+Game Vault is a decentralized platform that combines crowdfunding with marketing, allowing users to raise funds for projects or causes while providing companies with opportunities to advertise. The platform draws in users through engaging games, creating a unique ecosystem that blends fundraising with entertainment and brand exposure.
 Table of Contents
 Overview
 Key Features
@@ -13,7 +13,7 @@ Contributing
 License
 Acknowledgements
 Overview
-GameVault is designed to support the creation and funding of gaming projects through a decentralized autonomous organization (DAO). Users can launch crowdfunding campaigns, contribute funds, create proposals for project improvements, and vote on those proposals. The platform also offers a reward system that allows users to convert points into tokens.
+GameVault is designed to support the creation and funding of projects and causes through a decentralized autonomous organization (DAO). Users can launch crowdfunding campaigns, contribute funds, create proposals for project improvements, and vote on those proposals. The platform also offers a reward system that allows users to convert points into tokens.
 Key Features
 1. Crowdfunding Campaigns
 Create a Campaign:
