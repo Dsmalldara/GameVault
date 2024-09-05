@@ -1,13 +1,13 @@
-// validationSchema.ts
 import { z } from 'zod';
 
 export const crowdfundingSchema = z.object({
-  name: z.string().min(1, { message: 'Name is required' }),
-  purpose: z.string().min(1, { message: 'Purpose is required' }),
-  amount: z.string().refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-    message: 'Amount must be a positive number',
+  creator: z.string().min(1, { message: 'Creator address is required' }),
+  title: z.string().min(1, { message: 'Title is required' }),
+  description: z.string().min(1, { message: 'Description is required' }),
+  fundingGoal: z.string().refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
+    message: 'Funding goal must be a positive number',
   }),
-  timeframe: z.string().refine((val) => !isNaN(Number(val)) && Number(val) > 0, {
-    message: 'Timeframe must be a positive number',
+  durationTime: z.string().refine((val) => !isNaN(Number(val)) && Number(val) >= 1, {
+    message: 'Duration time must be at least 1 day',
   }),
 });
