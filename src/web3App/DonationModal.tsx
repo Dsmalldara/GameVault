@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import coinImage from '/image 1.png'

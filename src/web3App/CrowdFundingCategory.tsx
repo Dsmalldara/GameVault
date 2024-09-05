@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Art from '/Art.png';
 import Health from '/Health.png';
@@ -40,6 +40,9 @@ function CrowdFundingCategory() {
   }, []);
   return (
     <div className='md:space-y-8 space-y-4 mt-8 md:mt-[2rem]'>
+      <div className='hidden'>
+        {loading} {error}
+      </div>
      <div className='text-center justify-center items-center flex'>
      <h1 >
         We have   <Label htmlFor="campaignCount">Total Campaigns:</Label>

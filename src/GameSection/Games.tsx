@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // src/components/TriviaGame.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import QuestionCard from './QuestionCard';
 import ProgressBar from './ProgressBar';
 import { questions } from './utils';

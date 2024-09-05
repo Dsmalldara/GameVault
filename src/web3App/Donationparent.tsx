@@ -1,6 +1,5 @@
-import React from 'react'
+
 import DonationCard from './DonationCard'
-import DonationModal from './DonationModal'
 import { DonationArray } from './Web3Utils'
 
 function Donationparent() {

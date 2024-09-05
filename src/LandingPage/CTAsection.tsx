@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button'
-import React from 'react'
 import heroImg from '/herosection.png'
 import { Link } from 'react-router-dom'
 function CTAsection() {

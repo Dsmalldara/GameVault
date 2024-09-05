@@ -1,4 +1,3 @@
-import React from 'react'
 import DonationModal from './DonationModal'
 import RecentDontation from './RecentDonation'
 import Donationparent from './Donationparent'

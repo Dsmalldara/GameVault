@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GameApp from './GameSection/GameApp';
 import CrowdfundingForm from './web3App/CrowdFundForm';

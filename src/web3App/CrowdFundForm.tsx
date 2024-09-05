@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { createGofundme, createProposal, generateProposalHash, getGofundmeIdFromTxHash } from '@/Web3/Contract1';
+import { createGofundme } from '@/Web3/Contract1';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Loader2 } from 'lucide-react';
 
@@ -72,7 +72,9 @@ const CrowdfundingForm = () => {
     try {
       const privateKey = import.meta.env.VITE_LOCAL;
       if (!privateKey) {
+       
         throw new Error('Private key is not set in environment variables');
+       
       }
 
       const fundingGoalInWei = Number(fundingGoal) * Math.pow(10, 18);
@@ -127,17 +129,8 @@ const CrowdfundingForm = () => {
       if (!privateKey) {
         throw new Error('Private key is not set in environment variables');
       }
+    
 
-      const gofundmeId = await getGofundmeIdFromTxHash(txHash);
-      const proposalHash = generateProposalHash(
-        proposalTitle,
-        proposalDescription,
-        Number(proposalAmount),
-        proposalRecipient
-      );
-
-      const proposalReceipt = await createProposal(privateKey, gofundmeId, proposalHash);
-      setMessage(`Proposal created successfully. Transaction hash: ${proposalReceipt.transactionHash}`);
     } catch (error: any) {
       console.error('Error:', error);
       setMessage(`Error: ${error.message}`);
@@ -286,6 +279,7 @@ const CrowdfundingForm = () => {
         className="border-[#f2f4f6] focus:ring-[#eff1f2] text-white"
       />
       {errors.recipient && <p className="text-red-500 text-sm">{errors.recipient}</p>}
+      {txHash}
     </div>
   </CardContent>
   <CardFooter>

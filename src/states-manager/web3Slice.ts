@@ -69,7 +69,7 @@ const web3Slice = createSlice({
       })
       .addCase(initializeWeb3.fulfilled, (state, action: PayloadAction<Web3Payload>) => {
         state.isLoading = false;
-        state.web3 = action.payload.web3;
+        // state.web3 = action.payload.web3;
         state.accounts = action.payload.accounts;
       })
       .addCase(initializeWeb3.rejected, (state, action) => {

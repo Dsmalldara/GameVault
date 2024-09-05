@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const ProgressBar = ({ progress, value, totalValue }: { progress: number; value: number; totalValue: number }) => {
   return (

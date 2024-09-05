@@ -7,7 +7,7 @@ import { keccak256 } from 'ethers';
 const web3 = new Web3("wss://sepolia.era.zksync.dev/ws");
 web3.registerPlugin(new ZKsyncPlugin("wss://sepolia.era.zksync.dev/ws"));
 
-async function interactWithContract(privateKey: string, name: string, purpose: string, amount: number) {
+async function interactWithContract(privateKey: string) {
   console.log(ABI_ZKSYNC);
   try {
     const formattedPrivateKey = privateKey.startsWith('0x') ? privateKey : `0x${privateKey}`;
@@ -90,7 +90,7 @@ async function createGofundme(
     ).send({ from: account.address });
 
     // Convert BigInt values in receipt to strings
-    const formatBigInt = (key: string, value: any) => {
+    const formatBigInt = ( value: any) => {
       if (typeof value === 'bigint') {
         return value.toString();
       }
@@ -284,44 +284,7 @@ export { getFunderInfo };
 
 
 
-export async function getGofundmeIdFromTxHash(txHash: string): Promise<number> {
-  try {
-   
-    const receipt = await web3.eth.getTransactionReceipt(txHash);
-    
-    if (!receipt) {
-      throw new Error('Transaction receipt not found');
-    }
 
-    // Find the event log for the GoFundMe creation
-    const log = receipt.logs.find(log => 
-      log.topics[0] === web3.utils.sha3('GoFundMeCreated(uint256,address,string,string,uint256,uint256)')
-    );
-
-    if (!log) {
-      throw new Error('GoFundMeCreated event not found in transaction logs');
-    }
-
-    // Decode the log data to get the GoFundMe ID
-    const decodedLog = web3.eth.abi.decodeLog(
-      [
-        { type: 'uint256', name: 'id', indexed: true },
-        { type: 'address', name: 'creator' },
-        { type: 'string', name: 'title' },
-        { type: 'string', name: 'description' },
-        { type: 'uint256', name: 'fundingGoal' },
-        { type: 'uint256', name: 'duration' }
-      ],
-      log.data,
-      log.topics.slice(1)
-    );
-
-    return Number(decodedLog.id);
-  } catch (error: any) {
-    console.error('Error in getGofundmeIdFromTxHash:', error);
-    throw new Error(`Failed to get GoFundMe ID: ${error.message}`);
-  }
-}
 
 export function generateProposalHash(
   title: string,
@@ -351,33 +314,4 @@ export function generateProposalHash(
   }
 }
 
-// Usage example
-
-async function createProposalWorkflow(
-  txHash: string,
-  privateKey: string,
-  title: string,
-  description: string,
-  amount: number,
-  recipient: string
-) {
-  try {
-    // Assume `gofundmeId` comes from a simpler method or is passed directly
-    const gofundmeId = await getGofundmeIdFromTxHash(txHash);
-
-    // Generate the proposal hash using the provided parameters
-    const proposalHash = generateProposalHash(title, description, amount, recipient);
-
-
-    const proposalReceipt = await createProposal(privateKey, gofundmeId, proposalHash);
-
-    // Log the proposal receipt and return it
-    console.log('Proposal created successfully:', proposalReceipt);
-    return proposalReceipt;
-  } catch (error: any) {
-    console.error('Error in createProposalWorkflow:', error);
-    throw new Error(`Failed to create proposal: ${error.message}`);
-  }
-}
-
-export { createProposalWorkflow };
+// Us
