@@ -12,7 +12,10 @@ const DonationModal = () => {
   return (
    <div>
      {isModalVisible && (
-    <Card className="md:w-80 element text-white rounded-3xl relative">
+    <Card   className="md:w-80 text-black rounded-3xl relative"
+    style={{
+      background: 'linear-gradient(to bottom, rgba(17, 17, 31, 1) 45%, rgb(37, 18, 49) 55%, rgb(44, 146, 155) 100%)'
+    }}>
         <div>
             <Button  onClick={handleClose}  className='absolute top-2 right-4 bg-transparent hover:bg-transparent text-white text-2xl'><CircleX/></Button>
         </div>
