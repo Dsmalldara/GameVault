@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Web3, Contract } from "web3";
-import { ContractFactory, types, Web3ZKsyncL2, ZKsyncPlugin, ZKsyncWallet } from "web3-plugin-zksync";
+import { Web3} from "web3";
+import {  ZKsyncPlugin } from "web3-plugin-zksync";
 import ABI_ZKSYNC from "./abiZksync"
-import { ethers, keccak256 } from 'ethers';
+import { keccak256 } from 'ethers';
 
 const web3 = new Web3("wss://sepolia.era.zksync.dev/ws");
 web3.registerPlugin(new ZKsyncPlugin("wss://sepolia.era.zksync.dev/ws"));
@@ -13,6 +13,10 @@ async function interactWithContract(privateKey: string, name: string, purpose: s
     const formattedPrivateKey = privateKey.startsWith('0x') ? privateKey : `0x${privateKey}`;
     const wallet = new web3.ZKsync.Wallet(formattedPrivateKey);
 
+    if (!wallet.provider) {
+      throw new Error("Provider is undefined");
+    }
+    
     const contract = new wallet.provider.eth.Contract(
       ABI_ZKSYNC,
       "0x467A58E95E2295f35778cF9974B46cBEf00909bd"
