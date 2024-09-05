@@ -2,7 +2,7 @@
 import { Web3} from "web3";
 import {  ZKsyncPlugin } from "web3-plugin-zksync";
 import ABI_ZKSYNC from "./abiZksync"
-import { keccak256 } from 'ethers';
+// import { keccak256 } from 'ethers';
 
 const web3 = new Web3("wss://sepolia.era.zksync.dev/ws");
 web3.registerPlugin(new ZKsyncPlugin("wss://sepolia.era.zksync.dev/ws"));
@@ -305,7 +305,7 @@ export function generateProposalHash(
     );
 
     // Generate keccak256 hash of the proposal details
-    const proposalHash = keccak256(proposalDetails);
+    const proposalHash = proposalDetails
 
     return proposalHash;
   } catch (error: any) {
